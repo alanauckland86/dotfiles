@@ -11,10 +11,12 @@ FONT_PATH="$HOME/.fonts"
 #START FUNCTIONS
 
 
-
+#END FUNCTIONS
 
 
 # START SCRIPT EXECUTION 
+echo "copy fonts. (creates directory if they do not exist)"
+
 if [ ! -d $FONT_PATH ] 
   then 
     echo "$FONT_PATH does not exist. Creating directory"
@@ -28,5 +30,6 @@ if [ ! -d $FONT_PATH ]
     cp $HOME/dotfiles/fonts/* $FONT_PATH
 fi
 
-# Set xfce wallpaper
-#xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorrdp0/workspace0/last-image -s $HOME/dotfiles/images/wallpapers/anime-skies.jpg
+
+echo "setting wallpaper"
+xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorrdp0/workspace0/last-image -s $HOME/dotfiles/images/wallpapers/anime-skies.jpg
