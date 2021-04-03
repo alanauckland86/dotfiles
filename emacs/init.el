@@ -1,3 +1,11 @@
+;; Welcome to Archaic Lord's emacs configuration
+
+;; Quick usefull tips
+;; ctl+h f = Get help about a current command
+;; When using remote desktop from a mac to a Linux
+;; XFCE desktop meta = esc+x 
+
+
 ;; EMACS USER INTERFACE
 
 (setq inhibit-startup-message t)  ;; Disable start up message
@@ -7,7 +15,7 @@
 (tooltip-mode -1)                 ;; Disable tooltips
 (set-fringe-mode 10)              ;; Gives some breathing room
 
-(menu-bar-mode -1)                ;; Disables the menu
+;;(menu-bar-mode -1)                ;; Disables the menu
 (setq visible-bell t)             ;; Set visible bell (makse screen blink)
 
 (set-face-attribute 'default nil :font "Fira Code Retina" :height 180)
@@ -44,13 +52,22 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+
+;; Show commands entered in new window
+;; ctl+x ctl+e to evaluate new package
+;; meta+x comman-log-mode to run
+;; Open command log =  M-x clm/open-command-log-buffer
+(use-package command-log-mode)
+
+
+
 ;; END PACKAGE MANAGMENT
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(use-package)))
+ '(package-selected-packages '(command-log-mode use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
