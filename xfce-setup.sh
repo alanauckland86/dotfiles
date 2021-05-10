@@ -15,6 +15,9 @@ FONT_PATH="$HOME/.fonts"
 
 
 # START SCRIPT EXECUTION 
+echo "link emacs config"
+ln -s ~/dotfiles/emacs/init.el ~/.emacs.d/init.el
+
 echo "copy fonts. (creates directory if they do not exist)"
 
 if [ ! -d $FONT_PATH ] 
@@ -32,4 +35,4 @@ fi
 
 
 echo "setting wallpaper"
-xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorrdp0/workspace0/last-image -s $HOME/dotfiles/images/wallpapers/anime-skies.jpg
+#xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorrdp0/workspace0/last-image -s $HOME/dotfiles/images/wallpapers/anime-skies.jpg
