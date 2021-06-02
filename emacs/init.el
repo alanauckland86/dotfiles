@@ -1,4 +1,4 @@
-;; Welcome to Archaic Lord's emacs configuration
+;; Welcome to Alan Auckland's emacs configuration
 
 ;; Quick usefull tips
 ;; ctl+h f = Get help about a current command
