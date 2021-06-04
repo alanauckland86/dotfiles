@@ -9,6 +9,7 @@
 ;; EMACS USER INTERFACE
 
 (setq inhibit-startup-message t)  ;; Disable start up message
+(define-key key-translation-map (kbd "M-3") (kbd "#")) ;; Set ALT 3 as # on for mac os
 
 (scroll-bar-mode -1)              ;; Disable visible scrollbar
 (tool-bar-mode -1)                ;; Disable toolbar
