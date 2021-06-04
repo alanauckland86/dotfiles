@@ -19,7 +19,11 @@
 ;;(menu-bar-mode -1)                ;; Disables the menu
 (setq visible-bell t)             ;; Set visible bell (makse screen blink)
 
-(set-face-attribute 'default nil :font "Fira Code Retina" :height 180)
+
+(if (eq system-type 'gnu/linux)
+  (set-face-attribute 'default nil :font "Fira Code Retina" :height 180)
+)
+
 (load-theme 'tango-dark) 
 
 ;; END EMACS USER INTERFACE
@@ -60,7 +64,13 @@
 ;; Open command log =  M-x clm/open-command-log-buffer
 (use-package command-log-mode)
 
-
+(use-package markdown-mode
+  :ensure t
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "/usr/local/bin/pandoc"))
 
 ;; END PACKAGE MANAGMENT
 (custom-set-variables
@@ -68,7 +78,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(command-log-mode use-package)))
+ '(package-selected-packages (quote (command-log-mode use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
