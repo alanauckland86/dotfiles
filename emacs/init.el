@@ -49,8 +49,12 @@
 (straight-use-package 'command-log-mode)
 (straight-use-package 'markdown-mode)
 (straight-use-package 'treemacs)
+(straight-use-package 'magit)
 
+;; Set up spelling
 
+(setq-default ispell-program-name "C:/bin/Aspell-en-0.50-2-3.exe")
+(setq text-mode-hook '(lamda() (flyspell-mode t) ))
 
 
 
