@@ -47,18 +47,39 @@
   (load bootstrap-file nil 'nomessage))
 
 (straight-use-package 'command-log-mode)
+
+;; Mac OS
+
+;; On OS X/Darwin, make sure we add the path to the homebrew installs
+(when (string-equal system-type "darwin")
+  (setq exec-path (append exec-path '"/usr/local/bin")))
+
+
+;; Make sure on MacOS to run 'brew install markdown' to enable markdown preview
+
+
 (straight-use-package 'markdown-mode)
 (straight-use-package 'treemacs)
 (straight-use-package 'magit)
 
 ;; Set up spelling
 
+;; Set emacs to use installed markdown package from brew
+(custom-set-variables
+  '(markdown-command "/usr/local/bin/markdown"))
+
 (setq-default ispell-program-name "C:/bin/Aspell-en-0.50-2-3.exe")
 (setq text-mode-hook '(lamda() (flyspell-mode t) ))
 
+(straight-use-package 'treemacs)
 
 
+;; Spell checking
+;; Mac OS brew install hunspell
 
+(when (executable-find "hunspell")
+  (setq-default ispell-program-name "hunspell")
+  (setq ispell-really-hunspell t))
 
 
 ;; require 'package) ;; Ensure we have the package "package" loaded to setup and manage packages in Emacs
