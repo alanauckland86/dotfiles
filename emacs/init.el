@@ -20,9 +20,9 @@
 (setq visible-bell t)             ;; Set visible bell (makse screen blink)
 
 
-(if (eq system-type 'gnu/linux)
-  (set-face-attribute 'default nil :font "Fira Code Retina" :height 180)
-)
+;;(if (eq system-type 'gnu/linux)
+;;  (set-face-attribute 'default nil :font "Fira Code Retina" :height 180)
+;;)
 
 (load-theme 'tango-dark) 
 
@@ -34,42 +34,32 @@
 
 ;; On OS X/Darwin, make sure we add the path to the homebrew installs
 (when (string-equal system-type "darwin")
-  (setq exec-path (append exec-path '"/usr/local/bin")))
+  (setq exec-path (append exec-path '("/usr/local/bin"))))
 
 
 ;; Make sure on MacOS to run 'brew install markdown' to enable markdown preview
 
-
-(require 'package) ;; Ensure we have the package "package" loaded to setup and manage packages in Emacs
-
-
-;; Set up sources to get packages from. "package-archives" is a variable that holds the package source locations
-;; which is why we are setting this.
-
+;; Initialize package sources
+(require 'package)
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("org" . "https://orgmode.org/elpa/")
                          ("elpa" . "https://elpa.gnu.org/packages/")))
 
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-
-
-;; prepare package system to be used
 (package-initialize)
-
-;;  check package-archive-contents is present
-;; on first load look to see if there is an archive. If there is then get it
 (unless package-archive-contents
   (package-refresh-contents))
 
-
-;; install use-package if not installed on system
-(when (not (package-installed-p 'use-package))
-  (package-refresh-contents)
+  ;; Initialize use-package on non-Linux platforms
+(unless (package-installed-p 'use-package)
   (package-install 'use-package))
+
 (require 'use-package)
 (setq use-package-always-ensure t)
+
+
+
+
 
 
 ;; Show commands entered in new window
@@ -82,7 +72,7 @@
 
 (use-package markdown-mode
   :ensure t
- :commands (markdown-mode gfm-mode)
+  :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
@@ -141,9 +131,9 @@
           treemacs-width                         35
           treemacs-workspace-switch-cleanup      nil)
 
-    ;; The default width and height of the icons is 22 pixels. If you are
-    ;; using a Hi-DPI display, uncomment this to double the icon size.
-    ;;(treemacs-resize-icons 44)
+;;     The default width and height of the icons is 22 pixels. If you are
+;;    ;; using a Hi-DPI display, uncomment this to double the icon size.
+      (treemacs-resize-icons 44)
 
     (treemacs-follow-mode t)
     (treemacs-filewatch-mode t)
@@ -175,6 +165,7 @@
 
 
 (use-package magit
+  :bind ("C-x g" . magit-status)
   :commands (magit-status magit-get-current-branch)
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
