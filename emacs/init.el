@@ -30,6 +30,18 @@
  
 
 
+;; Emacs General configurations
+
+;; Emacs backup files 
+(setq backup-directory-alist `(("." . "~/emacs-backup-files")))
+
+(setq delete-old-versions t
+  kept-new-versions 6
+  kept-old-versions 2
+  version-control t)
+
+
+
 ;; Mac OS
 
 ;; On OS X/Darwin, make sure we add the path to the homebrew installs
