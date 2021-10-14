@@ -4,7 +4,7 @@
 ;; ctl+h f = Get help about a current command
 ;; When using remote desktop from a mac to a Linux
 ;; XFCE desktop meta = esc+x 
-
+;; test commentg
 
 ;; EMACS USER INTERFACE
 
