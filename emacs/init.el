@@ -48,6 +48,21 @@
   (setq exec-path (append exec-path '("/usr/local/bin"))))
 
 
+;; Spelling on Mac OS
+;; https://lucidmanager.org/productivity/emacs-for-distraction-free-writing/
+;;  brew install hunspell
+;; Dictionary files (*.aff and *.dic) should be placed in
+;;~/Library/Spelling/ or /Library/Spelling/.  Homebrew itself
+;;provides no dictionaries for Hunspell, but you can download
+;;compatible dictionaries from other sources, such as
+;;https://wiki.openoffice.org/wiki/Dictionaries.
+
+;; cd ~/Library/Spelling
+;; curl https://cgit.freedesktop.org/libreoffice/dictionaries/plain/en/en_GB.aff -o en_GB.aff
+
+
+
+
 ;; Make sure on MacOS to run 'brew install markdown' to enable markdown preview
 
 ;; Initialize package sources
@@ -68,6 +83,19 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+
+
+
+;; Spell checking
+  ;; Requires Hunspell
+  (use-package flyspell
+    :config
+    (setq ispell-program-name "hunspell"
+          ispell-default-dictionary "en_GB")
+    :hook (text-mode . flyspell-mode)
+    :bind (("M-<f7>" . flyspell-buffer)
+           ("<f7>" . flyspell-word)
+           ("C-;" . flyspell-auto-correct-previous-word)))
 
 
 
@@ -198,3 +226,5 @@
  ;; If there is more than one, they won't work right.
  )
 (put 'upcase-region 'disabled nil)
+
+
