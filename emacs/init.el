@@ -47,19 +47,14 @@
 (when (string-equal system-type "darwin")
   (setq exec-path (append exec-path '("/usr/local/bin"))))
 
-
-;; Spelling on Mac OS
-;; https://lucidmanager.org/productivity/emacs-for-distraction-free-writing/
-;;  brew install hunspell
-;; Dictionary files (*.aff and *.dic) should be placed in
-;;~/Library/Spelling/ or /Library/Spelling/.  Homebrew itself
-;;provides no dictionaries for Hunspell, but you can download
-;;compatible dictionaries from other sources, such as
-;;https://wiki.openoffice.org/wiki/Dictionaries.
-
-;; cd ~/Library/Spelling
-;; curl https://cgit.freedesktop.org/libreoffice/dictionaries/plain/en/en_GB.aff -o en_GB.aff
-
+;; Spelling on MacOS
+;; https://stackoverflow.com/questions/19022015/emacs-on-mac-os-x-how-to-get-spell-check-to-work
+;; brew install aspell
+;; which aspell  
+(setq ispell-program-name "/usr/local/bin/aspell")
+;; Download spelling libray en from https://ftp.gnu.org/gnu/aspell/dict/0index.html
+;; extract and install to ~/Libray/Spelling/aspelll......./
+;; ALT + X  aspell-change-dictionary use ? to show all available 
 
 
 
