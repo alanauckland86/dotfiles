@@ -50,9 +50,14 @@
 ;; Spelling on MacOS
 ;; https://stackoverflow.com/questions/19022015/emacs-on-mac-os-x-how-to-get-spell-check-to-work
 ;; brew install aspell
-;; which aspell  
-(setq ispell-program-name "/usr/local/bin/aspell")
-;; Download spelling libray en from https://ftp.gnu.org/gnu/aspell/dict/0index.html
+;; which aspell
+(when (string-equal system-type "darwin")
+  (setq ispell-program-name "/usr/local/bin/aspell"))
+
+(when (string-equal system-type "gnu/linux")
+  (setq ispell-program-name "/usr/bin/aspell"))
+
+  ;; Download spelling libray en from https://ftp.gnu.org/gnu/aspell/dict/0index.html
 ;; extract and install to ~/Libray/Spelling/aspelll......./
 ;; ALT + X  aspell-change-dictionary use ? to show all available 
 
@@ -79,14 +84,15 @@
 (setq use-package-always-ensure t)
 
 
-
-
 ;; Spell checking
   ;; Requires Hunspell
   (use-package flyspell
     :config
+    (when
     (setq ispell-program-name "hunspell"
-          ispell-default-dictionary "en_GB")
+          ispell-default-dictionary "en_GB"))
+    (when (string-equal system-type "gnu/linux")
+      (setq ispell-program-name "/usr/bin/aspell"))    
     :hook (text-mode . flyspell-mode)
     :bind (("M-<f7>" . flyspell-buffer)
            ("<f7>" . flyspell-word)
@@ -205,6 +211,12 @@
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
 
+;; Enable vim evil
+(unless (package-installed-p 'evil)
+  (package-install 'evil))
+
+(require 'evil)
+(evil-mode 1)
 
 
 ;; END PACKAGE MANAGMENT
@@ -213,7 +225,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (command-log-mode use-package))))
+ '(package-selected-packages '(evil command-log-mode use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
