@@ -23,7 +23,8 @@
 ;;  (set-face-attribute 'default nil :font "Fira Code Retina" :height 180)
 ;;)
 
-(load-theme 'tango-dark) 
+;;(load-theme 'tango-dark)
+;;(load-theme 'material t)
 
 ;; END EMACS USER INTERFACE
  
@@ -82,6 +83,11 @@
 
 (require 'use-package)
 (setq use-package-always-ensure t)
+
+(add-to-list 'load-path "/home/alan/dotfiles/emacs/themes/material-theme/emacs-material-theme-1.4")
+(require 'material-theme)
+(load-theme 'material t)
+
 
 
 ;; Spell checking
@@ -219,13 +225,18 @@
 (evil-mode 1)
 
 
+
+(global-display-line-numbers-mode)
+(setq display-line-numbers-type 'relative)
+
+
 ;; END PACKAGE MANAGMENT
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(evil command-log-mode use-package)))
+ '(package-selected-packages '(linum+ evil command-log-mode use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
