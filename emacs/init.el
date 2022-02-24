@@ -32,6 +32,7 @@
 
 ;; Emacs General configurations
 
+
 ;; Emacs backup files 
 (setq backup-directory-alist `(("." . "~/emacs-backup-files")))
 
@@ -84,9 +85,23 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-(add-to-list 'load-path "/home/alan/dotfiles/emacs/themes/material-theme/emacs-material-theme-1.4")
-(require 'material-theme)
-(load-theme 'material t)
+;; load all sub folders
+;; https://www.emacswiki.org/emacs/CustomThemes  
+(let ((basedir "~/.emacs.d/themes/"))
+  (dolist (f (directory-files basedir))
+    (if (and (not (or (equal f ".") (equal f "..")))
+	     (file-directory-p (concat basedir f)))
+	(add-to-list 'custom-theme-load-path (concat basedir f)))))
+
+
+      
+;;(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+ ;; https://github.com/qhga/shanty-theme:
+(load-theme 'nord t)
+	     
+;; (add-to-list 'load-path "/home/alan/dotfiles/emacs/themes/material-theme/emacs-material-theme-1.4")
+;;(require 'material-theme)
+;;(load-theme 'material t)
 
 
 
