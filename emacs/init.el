@@ -52,10 +52,8 @@
 ;; Spelling on MacOS
 ;; https://stackoverflow.com/questions/19022015/emacs-on-mac-os-x-how-to-get-spell-check-to-work
 ;; brew install aspell
-<<<<<<< HEAD
 ;; which aspell  
 ;; Download spelling libray en from https://ftp.gnu.org/gnu/aspell/dict/0index.html
-=======
 ;; which aspell
 (when (string-equal system-type "darwin")
   (setq ispell-program-name "/usr/local/bin/aspell"))
@@ -64,7 +62,6 @@
   (setq ispell-program-name "/usr/bin/aspell"))
 
   ;; Download spelling libray en from https://ftp.gnu.org/gnu/aspell/dict/0index.html
->>>>>>> fb3204656f3384a185359acd1ed45f4d2fc29c37
 ;; extract and install to ~/Libray/Spelling/aspelll......./
 ;; ALT + X  aspell-change-dictionary use ? to show all available 
 ;;(setq ispell--dictionary "en_GB")
@@ -117,16 +114,13 @@
   ;; Requires Hunspell
   (use-package flyspell
     :config
-<<<<<<< HEAD
     (setq ispell-program-name "aspell"
           ispell-default-dictionary "en_GB")
-=======
     (when
     (setq ispell-program-name "hunspell"
           ispell-default-dictionary "en_GB"))
     (when (string-equal system-type "gnu/linux")
       (setq ispell-program-name "/usr/bin/aspell"))    
->>>>>>> fb3204656f3384a185359acd1ed45f4d2fc29c37
     :hook (text-mode . flyspell-mode)
     :bind (("M-<f7>" . flyspell-buffer)
            ("<f7>" . flyspell-word)
