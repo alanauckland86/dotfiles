@@ -51,12 +51,13 @@
 ;; https://stackoverflow.com/questions/19022015/emacs-on-mac-os-x-how-to-get-spell-check-to-work
 ;; brew install aspell
 ;; which aspell  
-(setq ispell-program-name "/usr/local/bin/aspell")
 ;; Download spelling libray en from https://ftp.gnu.org/gnu/aspell/dict/0index.html
 ;; extract and install to ~/Libray/Spelling/aspelll......./
 ;; ALT + X  aspell-change-dictionary use ? to show all available 
-
-
+;;(setq ispell--dictionary "en_GB")
+;;(require 'ispell)
+;; usilng flspell
+;; (setq ispell-program-name "aspell")
 
 ;; Make sure on MacOS to run 'brew install markdown' to enable markdown preview
 
@@ -85,7 +86,7 @@
   ;; Requires Hunspell
   (use-package flyspell
     :config
-    (setq ispell-program-name "hunspell"
+    (setq ispell-program-name "aspell"
           ispell-default-dictionary "en_GB")
     :hook (text-mode . flyspell-mode)
     :bind (("M-<f7>" . flyspell-buffer)
