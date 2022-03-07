@@ -23,13 +23,15 @@
 ;;  (set-face-attribute 'default nil :font "Fira Code Retina" :height 180)
 ;;)
 
-(load-theme 'tango-dark) 
+;;(load-theme 'tango-dark)
+;;(load-theme 'material t)
 
 ;; END EMACS USER INTERFACE
  
 
 
 ;; Emacs General configurations
+
 
 ;; Emacs backup files 
 (setq backup-directory-alist `(("." . "~/emacs-backup-files")))
@@ -50,8 +52,19 @@
 ;; Spelling on MacOS
 ;; https://stackoverflow.com/questions/19022015/emacs-on-mac-os-x-how-to-get-spell-check-to-work
 ;; brew install aspell
+<<<<<<< HEAD
 ;; which aspell  
 ;; Download spelling libray en from https://ftp.gnu.org/gnu/aspell/dict/0index.html
+=======
+;; which aspell
+(when (string-equal system-type "darwin")
+  (setq ispell-program-name "/usr/local/bin/aspell"))
+
+(when (string-equal system-type "gnu/linux")
+  (setq ispell-program-name "/usr/bin/aspell"))
+
+  ;; Download spelling libray en from https://ftp.gnu.org/gnu/aspell/dict/0index.html
+>>>>>>> fb3204656f3384a185359acd1ed45f4d2fc29c37
 ;; extract and install to ~/Libray/Spelling/aspelll......./
 ;; ALT + X  aspell-change-dictionary use ? to show all available 
 ;;(setq ispell--dictionary "en_GB")
@@ -79,6 +92,24 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+;; load all sub folders
+;; https://www.emacswiki.org/emacs/CustomThemes  
+(let ((basedir "~/.emacs.d/themes/"))
+  (dolist (f (directory-files basedir))
+    (if (and (not (or (equal f ".") (equal f "..")))
+	     (file-directory-p (concat basedir f)))
+	(add-to-list 'custom-theme-load-path (concat basedir f)))))
+
+
+(unless (package-installed-p 'gruvbox-theme)
+  (package-install 'gruvbox-theme))
+;;(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+ ;; https://github.com/qhga/shanty-theme:
+(load-theme 'gruvbox-dark-hard t)
+	     
+;; (add-to-list 'load-path "/home/alan/dotfiles/emacs/themes/material-theme/emacs-material-theme-1.4")
+;;(require 'material-theme)
+;;(load-theme 'material t)
 
 
 
@@ -86,8 +117,16 @@
   ;; Requires Hunspell
   (use-package flyspell
     :config
+<<<<<<< HEAD
     (setq ispell-program-name "aspell"
           ispell-default-dictionary "en_GB")
+=======
+    (when
+    (setq ispell-program-name "hunspell"
+          ispell-default-dictionary "en_GB"))
+    (when (string-equal system-type "gnu/linux")
+      (setq ispell-program-name "/usr/bin/aspell"))    
+>>>>>>> fb3204656f3384a185359acd1ed45f4d2fc29c37
     :hook (text-mode . flyspell-mode)
     :bind (("M-<f7>" . flyspell-buffer)
            ("<f7>" . flyspell-word)
@@ -206,6 +245,17 @@
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
 
+;; Enable vim evil
+(unless (package-installed-p 'evil)
+  (package-install 'evil))
+
+(require 'evil)
+(evil-mode 1)
+
+
+
+(global-display-line-numbers-mode)
+(setq display-line-numbers-type 'relative)
 
 
 ;; END PACKAGE MANAGMENT
@@ -214,7 +264,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (command-log-mode use-package))))
+ '(package-selected-packages '(linum+ evil command-log-mode use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
