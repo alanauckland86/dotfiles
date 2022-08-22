@@ -1,4 +1,4 @@
-#Emacs custom configuration
+#Emacs custom configuration for UNIX
 
 To set up:
 1. Clone dotfile repository
@@ -10,4 +10,24 @@ To set up:
 
 ```ln -s ~/dotfiles/emacs/themes ~/.emacs.d/themes```
 
+
+
+For Windowws
+
+
+
+
+https://lucidmanager.org/productivity/emacs-windows/
+
+set home directory 
+setx HOME %USERPROFILE%
+
+create emacs directory
+mkdir .emacs.d
+created symlink 
+
+open Admin CMD prompt
+mklink "C:\Users\alan_\.emacs.d\init.el" "C:\Users\alan_\code\dotfiles\emacs\init.el"
+
+mklink C:\Users\alan_\.emacs.d\themes C:\Users\alan_\code\dotfiles\emacs\themes
 
