@@ -19,6 +19,11 @@
 (setq visible-bell t)             ;; Set visible bell (makse screen blink)
 
 
+
+;; Set line numbers
+(global-display-line-numbers-mode)
+(setq display-line-numbers-type 'relative)
+
 ;;(if (eq system-type 'gnu/linux)
 ;;  (set-face-attribute 'default nil :font "Fira Code Retina" :height 180)
 ;;)
@@ -245,11 +250,6 @@
 
 (require 'evil)
 (evil-mode 1)
-
-
-
-(global-display-line-numbers-mode)
-(setq display-line-numbers-type 'relative)
 
 
 ;; END PACKAGE MANAGMENT
