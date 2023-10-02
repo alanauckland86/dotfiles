@@ -6,9 +6,17 @@ To set up:
 
 ```ln -s ~/dotfiles/emacs/init.el ~/.emacs.d/init.el```
 
+
+OS
+```ln -s ~/code/dotfiles/emacs/init.el ~/.emacs.d/init.el```
+
 3. symlin themes to ~/.emacs.d/themes
 
 ```ln -s ~/dotfiles/emacs/themes ~/.emacs.d/themes```
+
+
+OS
+```ln -s ~/code/dotfiles/emacs/themes ~/.emacs.d/themes```
 
 
 
