@@ -114,7 +114,6 @@
 ;;(load-theme 'material t)
 
 
-
 ;; Spell checking
   ;; Requires Hunspell
   (use-package flyspell
@@ -251,6 +250,13 @@
 (require 'evil)
 (evil-mode 1)
 
+
+;; Install and use Helm for fuzzy finding
+(unless (package-installed-p 'helm)
+  (package-install 'helm))
+
+(require 'helm)
+(helm-mode 1)
 
 ;; END PACKAGE MANAGMENT
 (custom-set-variables
