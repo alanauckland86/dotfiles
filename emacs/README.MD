@@ -22,7 +22,11 @@ OS
 
 For Windowws
 
+NOC WSL2
 
+Clone dotfile repo then link
+ln -s ~/code/dotfiles/emacs/init.el ~/.emacs.d/init.el
+ln -s ~/code/dotfiles/emacs/themes/ ~/.emacs.d/themes
 
 
 https://lucidmanager.org/productivity/emacs-windows/
