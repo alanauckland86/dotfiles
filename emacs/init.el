@@ -39,6 +39,7 @@
 
 
 ;; Emacs backup files 
+(make-directory "~/emacs-backup-files" t) ;; Make directory do not error if it already exists
 (setq backup-directory-alist `(("." . "~/emacs-backup-files")))
 
 (setq delete-old-versions t
@@ -112,6 +113,26 @@
 ;; (add-to-list 'load-path "/home/alan/dotfiles/emacs/themes/material-theme/emacs-material-theme-1.4")
 ;;(require 'material-theme)
 ;;(load-theme 'material t)
+
+
+;; Doom Modeline
+
+;; ;; Install Nerd-icons required for Doom-modeline
+
+;; IN WSL 
+;; git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
+;; cd nerd-fonts
+;; ./install.sh
+(use-package nerd-icons
+   :ensure t
+   :init
+   (nerd-icons-font-family "DejaVu Sans Mono Book"))
+
+(set-face-attribute 'default nil :font "DejaVu Sans Mono Book" :height 180)
+
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
 
 
 
