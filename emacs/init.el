@@ -47,6 +47,9 @@
   kept-old-versions 2
   version-control t)
 
+;; Tramp auto save directory
+(setq tramp-auto-save-directory "~/tmp/tramp/")
+
 
 
 ;; Mac OS
