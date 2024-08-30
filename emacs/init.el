@@ -281,6 +281,12 @@
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
 
+;; Install and use ssh.el
+(unless (package-installed-p 'ssh)
+  (package-install 'ssh)
+(require 'ssh)
+  
+  
 ;; Enable vim evil
 (unless (package-installed-p 'evil)
   (package-install 'evil))
