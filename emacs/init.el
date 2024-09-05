@@ -37,6 +37,10 @@
 
 ;; Emacs General configurations
 
+;; Load path for manually installed packages
+(make-directory "~/.emacs.d/work-config" t)
+(add-to-list 'load-path "~/.emacs.d/work-config/")
+
 
 ;; Emacs backup files 
 (make-directory "~/emacs-backup-files" t) ;; Make directory do not error if it already exists
@@ -115,7 +119,7 @@
 	     
 ;; (add-to-list 'load-path "/home/alan/dotfiles/emacs/themes/material-theme/emacs-material-theme-1.4")
 ;;(require 'material-theme)
-;;(load-theme 'material t)
+;;(load-theme 'material t)i
 
 
 ;; Doom Modeline
@@ -126,12 +130,15 @@
 ;; git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
 ;; cd nerd-fonts
 ;; ./install.sh
-(use-package nerd-icons
-   :ensure t
-   :init
-   (nerd-icons-font-family "DejaVu Sans Mono Book"))
 
-(set-face-attribute 'default nil :font "DejaVu Sans Mono Book" :height 180)
+(unless (package-installed-p 'nerd-icons)
+  (package-install 'nerd-icons))
+
+
+(use-package nerd-icons
+   :ensure t)
+
+(set-face-attribute 'default nil :font "RobotoMono Nerd Font Mono" :height 180)
 
 (use-package doom-modeline
   :ensure t
@@ -280,13 +287,6 @@
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
-
-;; Install and use ssh.el
-(unless (package-installed-p 'ssh)
-  (package-install 'ssh)
-(require 'ssh)
-  
-  
 ;; Enable vim evil
 (unless (package-installed-p 'evil)
   (package-install 'evil))
@@ -301,6 +301,30 @@
 
 (require 'helm)
 (helm-mode 1)
+
+
+;; Install and use ssh.el
+(unless (package-installed-p 'ssh)
+  (package-install 'ssh))
+
+
+(use-package ssh
+  :ensure t)
+  ;;:after comint)
+
+(require 'ssh)
+
+;; Dirvish dired file manager replacment
+
+(unless (package-installed-p 'dirvish)
+  (package-install 'dirvish))
+
+(use-package dirvish
+  :init
+  (dirvish-override-dired-mode)
+  )
+(require 'dirvish)
+
 
 ;; END PACKAGE MANAGMENT
 (custom-set-variables
