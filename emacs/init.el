@@ -159,6 +159,15 @@
 ;; END OF PROJECTILE
 
 
+;; ord-mode
+(unless (package-installed-p 'org-roam)
+  (package-install 'org-roam))
+
+(use-package org-roam)
+(require 'org-roam)
+
+
+
 ;; Spell checking
   ;; Requires Hunspell
   (use-package flyspell
