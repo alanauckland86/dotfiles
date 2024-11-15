@@ -20,6 +20,16 @@
 
 
 
+;; Set frame size on launch
+(setq default-frame-alist
+      '((top . 10) (left . 2)
+        (width . 80) (height . 53)
+ ;;       (font . "terminus-iso8859-1-bold-14")
+        ))
+
+
+
+
 ;; Set line numbers
 (global-display-line-numbers-mode)
 (setq display-line-numbers-type 'relative)
@@ -159,12 +169,11 @@
 ;; END OF PROJECTILE
 
 
-;; ord-mode
+;; org-mode
 (unless (package-installed-p 'org-roam)
   (package-install 'org-roam))
 
 (use-package org-roam)
-(require 'org-roam)
 
 
 
