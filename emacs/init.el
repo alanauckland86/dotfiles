@@ -131,7 +131,6 @@
 ;;(require 'material-theme)
 ;;(load-theme 'material t)i
 
-
 ;; Doom Modeline
 
 ;; ;; Install Nerd-icons required for Doom-modeline
@@ -153,6 +152,63 @@
 (use-package doom-modeline
   :ensure t
   :init (doom-modeline-mode 1))
+
+
+;; LSP
+;; https://emacs-lsp.github.io/lsp-mode/page/installation/
+
+;; lsp-mode - emacs client for an LSP Server
+(unless (package-installed-p 'lsp-mode)
+  (package-install 'lsp-mode))
+
+(require 'lsp-mode)
+
+(use-package lsp-mode
+	 :init
+	 ;; set prefix for lsp-command-keymap
+	 (setq lsp-keymap-prefix "C-c l")
+	 :hook (c-mode . lsp-deferred)
+	 (lsp-mode . lsp-enable-which-key-integration)
+	 :commands lsp-deferred
+ )
+	 
+;; C programming server
+
+;; CCLS https://melpa.org/#/ccls 
+;; Don't forget to also install CCLS on you distribution e.g sudo apt install ccls
+(unless (package-installed-p 'ccls)
+  (package-install 'ccls))
+
+(require 'ccls)
+(use-package ccls
+  :ensure t
+  :config
+  (setq ccls-excutable "ccls")
+)
+
+
+
+;; END LSP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -202,6 +258,10 @@
 ;; meta+x comman-log-mode to run
 ;; Open command log =  M-x clm/open-command-log-buffer
 (use-package command-log-mode)
+
+
+
+
 
 
 
