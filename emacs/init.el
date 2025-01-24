@@ -22,8 +22,8 @@
 
 ;; Set frame size on launch
 (setq default-frame-alist
-      '((top . 10) (left . 2)
-        (width . 80) (height . 53)
+      '((top . 10) (left . 250)
+        (width . 80) (height . 33)
  ;;       (font . "terminus-iso8859-1-bold-14")
         ))
 
