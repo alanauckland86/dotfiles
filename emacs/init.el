@@ -121,11 +121,24 @@
 	(add-to-list 'custom-theme-load-path (concat basedir f)))))
 
 
-(unless (package-installed-p 'gruvbox-theme)
-  (package-install 'gruvbox-theme))
-;;(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
- ;; https://github.com/qhga/shanty-theme:
-(load-theme 'gruvbox-dark-hard t)
+
+
+
+(unless (package-installed-p 'ef-themes)
+  (package-install 'ef-themes))
+
+(require 'ef-themes)
+
+;; Disable all other themes to avoid awkward blending:
+(mapc #'disable-theme custom-enabled-themes)
+
+(load-theme 'ef-melissa-light)
+
+;; commented out(unless (package-installed-p 'gruvbox-theme)
+  ;; commented out (package-install 'gruvbox-theme))
+       ;;(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+         ;; https://github.com/qhga/shanty-theme:
+;; commented out (load-theme 'gruvbox-dark-hard t)
 	     
 ;; (add-to-list 'load-path "/home/alan/dotfiles/emacs/themes/material-theme/emacs-material-theme-1.4")
 ;;(require 'material-theme)
