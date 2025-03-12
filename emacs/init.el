@@ -132,7 +132,7 @@
 ;; Disable all other themes to avoid awkward blending:
 (mapc #'disable-theme custom-enabled-themes)
 
-(load-theme 'ef-melissa-light)
+(load-theme 'ef-melissa-light t)
 
 ;; commented out(unless (package-installed-p 'gruvbox-theme)
   ;; commented out (package-install 'gruvbox-theme))
@@ -423,7 +423,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(linum+ evil command-log-mode use-package)))
+ '(custom-safe-themes
+   '("ffa78fc746f85d1c88a2d1691b1e37d21832e9a44a0eeee114a00816eabcdaf9"
+     default))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
