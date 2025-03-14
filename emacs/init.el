@@ -18,6 +18,8 @@
 ;;(menu-bar-mode -1)                ;; Disables the menu
 (setq visible-bell t)             ;; Set visible bell (makse screen blink)
 
+;; Enable smoother scrolling
+(pixel-scroll-precision-mode t)
 
 
 ;; Set frame size on launch
