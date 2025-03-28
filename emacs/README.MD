@@ -43,3 +43,18 @@ mklink "C:\Users\alan_\.emacs.d\init.el" "C:\Users\alan_\code\dotfiles\emacs\ini
 
 mklink C:\Users\alan_\.emacs.d\themes C:\Users\alan_\code\dotfiles\emacs\themes
 
+
+Run emacs as daemon service on Linux
+(currently ran on Rocky Linux 9
+
+CD to emacs.service file location:
+then run command
+systemctl link ./emacs.service
+<Enter password or run with sudo>
+
+Then run
+ systemctl enable --user emacs.service
+ systemctl start --user emacs.service
+
+Then you should be able to run 
+emacsclient <filename> 
