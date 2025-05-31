@@ -101,7 +101,8 @@
 
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("org" . "https://orgmode.org/elpa/")
-                         ("elpa" . "https://elpa.gnu.org/packages/")))
+                         ("elpa" . "https://elpa.gnu.org/packages/")
+			 ("nongnu" . "https://elpa.nongnu.org/nongnu/")))
 
 (package-initialize)
 (unless package-archive-contents
@@ -111,8 +112,12 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
-(require 'use-package)
+(eval-when-compile
+ (require 'use-package))
 (setq use-package-always-ensure t)
+
+
+
 
 ;; load all sub folders
 ;; https://www.emacswiki.org/emacs/CustomThemes  
@@ -168,6 +173,18 @@
   :ensure t
   :init (doom-modeline-mode 1))
 
+;; Install and configure company-mode
+;; for rust lsp
+
+(unless (package-installed-p 'company)
+  (package-install 'company))
+
+(use-package company
+  :ensure t
+  :config
+  (global-company-mode t))
+
+
 
 ;; LSP
 ;; https://emacs-lsp.github.io/lsp-mode/page/installation/
@@ -183,7 +200,7 @@
 	 ;; set prefix for lsp-command-keymap
 	 (setq lsp-keymap-prefix "C-c l")
 	 :hook (c-mode . lsp-deferred)
-	 (lsp-mode . lsp-enable-which-key-integration)
+	 :hook (rustic-mode . lsp-deferred)
 	 :commands lsp-deferred
  )
 	 
@@ -200,30 +217,48 @@
   :config
   (setq ccls-excutable "ccls")
 )
-
-
-
 ;; END LSP
 
 
+;; RUST
+;; Emacs rust setup for Emacs:
+;;    https://github.com/rust-lang/rust-mode
+
+(unless (package-installed-p 'rustic)
+  (package-install 'rustic))
+(use-package rustic
+  :ensure t
+  :config
+  (setq rustic-lsp-client 'lsp-mode))
+
+;; Forces spaces instead of tabs
+(add-hook 'rust-mode-hook
+	  (lambda () (setq indent-tabs-mode nil)))
+
+(unless (package-installed-p 'lsp-ui)
+  (package-install 'lsp-ui))
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode)
+
+(unless (package-installed-p 'dap-mode)
+  (package-install 'dap-mode))
+
+(use-package dap-mode
+  :ensure t
+  :config
+  (dap-ui-mode))
+
+;; END RUST 
 
 
+;; EAT Terminal from nongnu
 
+(unless (package-installed-p 'eat)
+  (package-install 'eat))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(use-package eat
+ :ensure t)
 
 
 
