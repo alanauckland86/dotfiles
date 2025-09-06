@@ -1,4 +1,4 @@
-;; Welcome to Alan Auckland's emacs configuration
+;;  Emacs configuration
 
 ;; Quick usefull tips
 ;; ctl+h f = Get help about a current command
@@ -147,9 +147,9 @@
          ;; https://github.com/qhga/shanty-theme:
 ;; commented out (load-theme 'gruvbox-dark-hard t)
 	     
-;; (add-to-list 'load-path "/home/alan/dotfiles/emacs/themes/material-theme/emacs-material-theme-1.4")
+;; (add-to-list 'load-path "~/code/dotfiles/emacs/themes/material-theme/emacs-material-theme-1.4")
 ;;(require 'material-theme)
-;;(load-theme 'material t)i
+;;(load-theme 'material t)
 
 ;; Doom Modeline
 
