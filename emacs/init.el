@@ -30,7 +30,8 @@
         ))
 
 
-
+;; Set default column width to 80
+(set-default fill-column 80)
 
 ;; Set line numbers
 (global-display-line-numbers-mode)
