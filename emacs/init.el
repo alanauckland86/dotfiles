@@ -5,6 +5,8 @@
 ;; When using remote desktop from a mac to a Linux
 ;; XFCE desktop meta = esc+x 
 
+
+;; test on bazzite
 ;; EMACS USER INTERFACE
 
 (setq inhibit-startup-message t)  ;; Disable start up message
@@ -31,7 +33,7 @@
 
 
 ;; Set default column width to 80
-(set-default fill-column 80)
+(set-default 'fill-column 80)
 
 ;; Set line numbers
 (global-display-line-numbers-mode)
@@ -462,8 +464,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("ffa78fc746f85d1c88a2d1691b1e37d21832e9a44a0eeee114a00816eabcdaf9"
-     default))
+   '("ffa78fc746f85d1c88a2d1691b1e37d21832e9a44a0eeee114a00816eabcdaf9" default))
  '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
