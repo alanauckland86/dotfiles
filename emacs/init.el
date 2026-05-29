@@ -458,7 +458,7 @@
 
 
 ;; Install and use org-journal
-(unless (package-installed-p 'require 'org-journal)
+(unless (package-installed-p 'org-journal)
   (package-install 'org-journal))
 
 (require 'org-journal)
