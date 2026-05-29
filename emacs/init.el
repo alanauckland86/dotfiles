@@ -463,7 +463,7 @@
 
 (require 'org-journal)
 
-
+(setq org-journal-dir "~/code/noc-notes/journal/")
 
 ;; END PACKAGE MANAGMENT
 (custom-set-variables
