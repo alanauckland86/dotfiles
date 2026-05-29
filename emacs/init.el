@@ -457,6 +457,14 @@
 (require 'dirvish)
 
 
+;; Install and use org-journal
+(unless (package-installed-p 'require 'org-journal)
+  (package-install 'org-journal))
+
+(require 'org-journal)
+
+
+
 ;; END PACKAGE MANAGMENT
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
