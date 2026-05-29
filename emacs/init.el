@@ -465,6 +465,7 @@
 (require 'org-journal)
 
 (setq org-journal-dir "~/code/noc-notes/journal/")
+(setq org-journal-find-file-fn #'find-file)
 (global-set-key (kbd "C-c j") #'org-journal-new-entry)
 
 
