@@ -459,11 +459,17 @@
 
 ;; Install and use org-journal
 (unless (package-installed-p 'org-journal)
+  (package-refresh-contents)
   (package-install 'org-journal))
 
 (require 'org-journal)
 
 (setq org-journal-dir "~/code/noc-notes/journal/")
+(global-set-key (kbd "C-c j") #'org-journal-new-entry)
+
+
+
+
 
 ;; END PACKAGE MANAGMENT
 (custom-set-variables
