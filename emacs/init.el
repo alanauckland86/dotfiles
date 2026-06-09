@@ -464,7 +464,7 @@
 
 (require 'org-journal)
 
-(setq org-journal-dir "~/code/noc-notes/journal/")
+(setq org-journal-dir "/home/alauck/code/alan-noc-journal/")
 (setq org-journal-find-file-fn #'find-file)
 (setq org-journal-file-type 'monthly)
 (global-set-key (kbd "C-c j") #'org-journal-new-entry)
