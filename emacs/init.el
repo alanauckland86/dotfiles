@@ -1,4 +1,4 @@
-;;  Emacs configuration
+;;  Emacs configuration  -*- lexical-binding: t; -*-
 
 ;; Quick usefull tips
 ;; ctl+h f = Get help about a current command
