@@ -25,15 +25,15 @@
 
 
 ;; Set frame size on launch
-(setq default-frame-alist
-      '((top . 10) (left . 250)
-        (width . 80) (height . 33)
+;; (setq default-frame-alist
+;;      '((top . 10) (left . 250)
+;;        (width . 80) (height . 33)
  ;;       (font . "terminus-iso8859-1-bold-14")
-        ))
+ ;;       ))
 
 
 ;; Set default column width to 80
-(set-default 'fill-column 80)
+;;(set-default 'fill-column 80)
 
 ;; Set line numbers
 (global-display-line-numbers-mode)
@@ -70,6 +70,9 @@
 (setq tramp-auto-save-directory "~/tmp/tramp/")
 
 
+;; Make vterm start zsh as a login shell
+;; This is to make sure it reads my ~/.zprofile config
+(setq vterm-shell "/usr/bin/zsh -l")
 
 ;; Mac OS
 
